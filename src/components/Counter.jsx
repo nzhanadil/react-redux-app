@@ -1,9 +1,14 @@
 import { useSelector, useDispatch } from "react-redux"
-import { increment, decrement, reset } from "../slices/counterSlice"
+import { increment, decrement, reset, callApi } from "../slices/counterSlice"
+import { useEffect } from "react";
 
 const Counter = () => {
     const counter = useSelector(state => state.counter.value)
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(callApi)
+    }, [dispatch])
 
     return (
         <div>
